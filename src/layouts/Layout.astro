@@ -21,11 +21,48 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
-	
-	*{
+
+	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
 	}
 
+	#container-calc {
+		height: calc(100vh - 4rem);
+	}
+	#div_func-menu {
+		height: 8%;
+	}
+	#div_func-res {
+		height: 20%;
+	}
+	#div_func-res > input {
+		box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.3);
+	}
+	#div_func-op {
+		height: 65%;
+	}
+
+	.btn{
+		@apply flex justify-center items-center rounded-xl;
+		transition: all 0.3s;
+		box-shadow:
+		inset 0 0 5px rgba(0, 0, 0, 0.3),
+		0 0 10px rgba(0, 0, 0, 0.3);
+		
+	}
+	.btn-number {
+		@apply text-lg aspect-square font-semibold text-white bg-red-strong;
+	}
+	.btn-operation{
+		@apply h-full aspect-auto font-bold text-xl text-violet-blue bg-yellow-light;
+	}
+	.btn:hover {
+		box-shadow:
+			inset 0 0 5px rgba(0, 0, 0, 0),
+			0 0 10px rgba(0, 0, 0, 0);
+		/* background: rgb(255, 100, 100); */
+		filter: brightness(3) ;
+	}
 </style>

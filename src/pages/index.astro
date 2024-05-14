@@ -16,35 +16,3 @@ import Calculator from "../components/Calculator.tsx";
 
 
 </Layout>
-
-<style is:global>
-	#container-calc {
-		height: calc(100vh - 4rem);
-	}
-	#div_func-menu {
-		height: 8%;
-	}
-	#div_func-res {
-		height: 20%;
-	}
-	#div_func-res > input {
-		box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.3);
-	}
-	#div_func-op {
-		height: 65%;
-	}
-	.btn-number {
-		transition: all 0.3s;
-		width: 100%;
-		box-shadow:
-			inset 0 0 5px rgba(0, 0, 0, 0.3),
-			0 0 10px rgba(0, 0, 0, 0.3);
-		border-radius: 10px;
-	}
-	.btn-number:hover {
-		box-shadow:
-			inset 0 0 5px rgba(0, 0, 0, 0),
-			0 0 10px rgba(0, 0, 0, 0);
-		background: rgb(255, 100, 100);
-	}
-</style>
