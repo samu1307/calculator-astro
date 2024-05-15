@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type Props = {
     value: string;
-    num1: number;
-    num2: number;
-    op: string;
     handlerValue: (value: string) => void;
-    handlerNum1: (num1: number) => void;
-    handlerNum2: (num2: number) => void;
-    handlerOp: (op: string) => void;
 }
 
-const Buttons: React.FC<Props> = ({ value, num1, num2, op, handlerValue, handlerNum1, handlerNum2, handlerOp }) => {
+const Buttons: React.FC<Props> = ({ value, handlerValue }) => {
+
+    const [isActive, setIsActive] = useState(true)
 
     const data = [
         {
             value: 'Borrar',
-            operation: '',
-            colspan: 3
+            colspan: 2
+        },
+        {
+            value: 'B'
         },
         {
             value: '+'
@@ -72,25 +70,60 @@ const Buttons: React.FC<Props> = ({ value, num1, num2, op, handlerValue, handler
 
     ]
 
-    const handlerClick = (typeButton: string | number)=>{
-        if (typeof typeButton == 'number') {
-            if (op.length != 0) {
-                handlerNum2(parseInt(num1.toString() + typeButton.toString()))
-                console.log('1')
-            }else{
-                handlerNum1(typeButton)
-                handlerValue(value + num1.toString())
-                console.log(value + typeButton)
-            }
+    const TYPE_OF_FUNCTIONS = {
+        DELETE: 'Borrar',
+        BACK: 'B',
+        RESOLVE: '=',
+    }
+
+    const operation = (btn: string | number): string => typeof btn == 'string' ? 'btn-operation' : 'btn-number'
+    const classBtns = (value: string | number, col: number | undefined) => `${operation(value)} col-${col}`
+
+    const handlerClick = (valueP: string | number, operation: string | undefined = undefined) => {
+
+        const valueNow: string = (operation) ? operation : valueP.toString()
+
+        if (valueNow == TYPE_OF_FUNCTIONS.DELETE) {
+            handlerValue('')
+            setIsActive(true)
+            return
         }
 
+        if (!isActive) {
+            return
+        }
+
+        if (valueNow == TYPE_OF_FUNCTIONS.BACK) {
+            try {
+                handlerValue(value.slice(0, -1))
+            } catch (error) {
+                error
+            }
+            return
+        }
+
+        if (valueNow == TYPE_OF_FUNCTIONS.RESOLVE && isActive) {
+            try {
+                handlerValue(eval(value))
+            } catch (error) {
+                handlerValue('Error')
+                setIsActive(!isActive)
+            }
+            return
+        }
+
+        if (value.length == 0) {
+            handlerValue(valueNow.toString())
+        } else {
+            handlerValue(value + valueNow.toString())
+        }
     }
 
     return (
         <>
             {
-                data.map((button, i) => (
-                    <button onClick={() => handlerClick(button.value) } key={i} className={`${typeof button.value == 'string' ? 'btn-operation' : 'btn-number'} btn ${button.colspan ? `col-${button.colspan}` : ''}`}><span>{button.value}</span></button>
+                data.map(({ value, colspan, operation }) => (
+                    <button onClick={() => handlerClick(value, operation)} key={value} className={classBtns(value, colspan)}>{value}</button>
                 ))
             }
         </>

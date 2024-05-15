@@ -5,14 +5,12 @@ import Calculator from "../components/Calculator.tsx";
 
 <Layout title="Calculadora">
 
-	<div class="w-full h-screen flex justify-center items-center overflow-auto">
+	<main class="w-full h-screen flex justify-center items-center">
 
-		<div class="max-w-4/12 max-h-3/4 p-2 rounded-xl shadow-xl shadow-neutral-400 bg-violet-blue relative overflow-clip">
+		<section class="w-60 relative">
 			<Calculator client:load />
-		</div>
+		</section>
 
-	</div>
-
-
+	</main>
 
 </Layout>

@@ -21,47 +21,88 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
-
 	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+		user-select: none;
 	}
-	#div_func-menu {
-		height: 8%;
-	}
-	#div_func-res {
-		height: 20%;
-	}
-	#div_func-res > input {
+	input {
 		box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.3);
 	}
-	#div_func-op {
-		height: 65%;
+	button {
+		@apply flex justify-center items-center rounded-xl relative z-50;
+		transform: translate(5px, -5px);
+		transition: box-shadow 0.3s ease-in-out;
+		&::before {
+			content: "";
+			@apply w-full h-full absolute inset-0 -z-50 rounded-xl;
+		}
 	}
-
-	.btn{
-		@apply flex justify-center items-center rounded-xl;
-		transition: all 0.3s;
-		box-shadow:
-		inset 0 0 5px rgba(0, 0, 0, 0.3),
-		0 0 10px rgba(0, 0, 0, 0.3);
-		
-	}
+	
 	.btn-number {
 		@apply text-lg aspect-square font-semibold text-white bg-red-strong;
+		&::before {
+			box-shadow:
+				-1px 1px hsl(352, 82%, 52%),
+				-2px 2px hsl(352, 82%, 47%),
+				-3px 3px hsl(352, 82%, 42%),
+				-4px 4px hsl(352, 82%, 37%),
+				-5px 5px hsl(352, 82%, 32%),
+				-5px 5px 2px 1px rgba(0, 0, 0, 0.4);
+		}
 	}
-	.btn-operation{
+	.btn-operation {
 		@apply h-full aspect-auto font-bold text-xl text-violet-blue bg-yellow-light;
-	}
-	.btn:hover {
-		box-shadow:
-			inset 0 0 5px rgba(0, 0, 0, 0),
-			0 0 10px rgba(0, 0, 0, 0);
-		/* background: rgb(255, 100, 100); */
-		filter: brightness(3) ;
+		&::before {
+			box-shadow:
+				-1px 1px hsl(65, 44%, 77%),
+				-2px 2px hsl(65, 44%, 77%),
+				-3px 3px hsl(65, 44%, 77%),
+				-4px 4px hsl(65, 44%, 77%),
+				-5px 5px hsl(65, 44%, 77%),
+				-5px 5px 2px 1px rgba(0, 0, 0, 0.4);
+		}
 	}
 
-	.col-2{grid-column: span 2 / span 2;}
-	.col-3{grid-column: span 3 / span 3;}
+	section {
+		transform: skew(10deg);
+		background-color: transparent;
+	}
+
+	header {
+		transform: translate(5px, 0) skew(-10deg);
+		box-shadow:
+			-2px 3px hsl(239, 27%, 34%),
+			-5px 6px hsl(239, 27%, 28%),
+			-7px 9px hsl(239, 27%, 27%),
+			-10px 12px hsl(239, 27%, 26%),
+			-12px 15px hsl(239, 27%, 25%),
+			-15px 18px hsl(239, 27%, 24%),
+			-17px 21px hsl(239, 27%, 23%),
+			-20px 24px hsl(239, 27%, 22%),
+			-22px 27px hsl(239, 27%, 21%),
+			-25px 31px hsl(239, 27%, 20%),
+			-27px 30px 20px 1px rgba(0, 0, 0, 0.4);
+	}
+
+	aside {
+		transform: translate(-4px, 0) skew(0);
+		box-shadow:
+			-3px 3px hsl(239, 27%, 34%),
+			-6px 6px hsl(239, 27%, 28%),
+			-9px 9px hsl(239, 27%, 27%),
+			-12px 12px hsl(239, 27%, 26%),
+			-15px 15px hsl(239, 27%, 25%),
+			-18px 18px hsl(239, 27%, 24%),
+			-21px 21px hsl(239, 27%, 23%),
+			-24px 24px hsl(239, 27%, 22%),
+			-27px 27px hsl(239, 27%, 21%),
+			-30px 30px hsl(239, 27%, 20%),
+			-30px 30px 20px 1px rgba(0, 0, 0, 0.4);
+	}
+
+	.col-2 {
+		grid-column: span 2 / span 2;
+	}
 </style>
