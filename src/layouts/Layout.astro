@@ -27,10 +27,6 @@ const { title } = Astro.props;
 		padding: 0;
 		box-sizing: border-box;
 	}
-
-	#container-calc {
-		height: calc(100vh - 4rem);
-	}
 	#div_func-menu {
 		height: 8%;
 	}
@@ -65,4 +61,7 @@ const { title } = Astro.props;
 		/* background: rgb(255, 100, 100); */
 		filter: brightness(3) ;
 	}
+
+	.col-2{grid-column: span 2 / span 2;}
+	.col-3{grid-column: span 3 / span 3;}
 </style>
