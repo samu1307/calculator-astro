@@ -33,18 +33,23 @@ const { title } = Astro.props;
 	button {
 		@apply flex justify-center items-center rounded-xl relative z-50;
 		transform: translate(5px, -5px);
-		transition: box-shadow 0.3s ease-in-out;
 		&::before {
 			content: "";
 			@apply w-full h-full absolute inset-0 -z-50 rounded-xl;
 		}
+		&:active{
+			transform: translate(0,0);
+			&::before{
+				box-shadow: none;
+			}
+		}
 	}
-	
+
 	.btn-number {
 		@apply text-lg aspect-square font-semibold text-white bg-red-strong;
 		&::before {
 			box-shadow:
-				-1px 1px hsl(352, 82%, 52%),
+				-1px 1px white,
 				-2px 2px hsl(352, 82%, 47%),
 				-3px 3px hsl(352, 82%, 42%),
 				-4px 4px hsl(352, 82%, 37%),
@@ -56,11 +61,11 @@ const { title } = Astro.props;
 		@apply h-full aspect-auto font-bold text-xl text-violet-blue bg-yellow-light;
 		&::before {
 			box-shadow:
-				-1px 1px hsl(65, 44%, 77%),
+				-1px 1px hsl(239, 27%, 28%),
 				-2px 2px hsl(65, 44%, 77%),
-				-3px 3px hsl(65, 44%, 77%),
-				-4px 4px hsl(65, 44%, 77%),
-				-5px 5px hsl(65, 44%, 77%),
+				-3px 3px hsl(65, 44%, 72%),
+				-4px 4px hsl(65, 44%, 67%),
+				-5px 5px hsl(65, 44%, 62%),
 				-5px 5px 2px 1px rgba(0, 0, 0, 0.4);
 		}
 	}
